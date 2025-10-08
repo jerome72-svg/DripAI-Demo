@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DripAI | Demo Experience</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #8d29e4, #c20664, #813af1);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+      text-align: center;
+      padding: 40px 20px;
+      overflow-y: auto;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(25px);
+      border-radius: 30px;
+      padding: 40px 30px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 0 40px rgba(236, 72, 153, 0.25);
+      transition: all 0.6s ease;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #ec4899, #a855f7, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: #f5d0fe;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    label, button {
+      display: inline-block;
+      background: linear-gradient(90deg, #d946ef, #9333ea);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 10px;
+      box-shadow: 0 5px 20px rgba(236, 72, 153, 0.35);
+    }
+
+    label:hover, button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 25px rgba(236, 72, 153, 0.55);
+    }
+
+    img {
+      display: none;
+      width: 100%;
+      border-radius: 20px;
+      margin-top: 20px;
+      box-shadow: 0 0 20px rgba(147, 51, 234, 0.3);
+    }
+
+    .message {
+      display: none;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .highlight {
+      color: #f9a8d4;
+      font-weight: 700;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .loader {
+      display: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #f9a8d4;
+      margin-top: 15px;
+      animation: blink 1.2s infinite alternate;
+    }
+
+    @keyframes blink {
+      from { opacity: 0.6; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="demoContainer">
+    <h1>Experience DripAI</h1>
+    <p>
+     Ever wondered how attractive you really are? Upload your picture and let DripAI — trained on millions of real human ratings — show you how the world sees you 👀.
+    </p>
+
+    <label for="upload">Upload Your Photo</label>
+    <input type="file" id="upload" accept="image/*">
+    <img id="preview" alt="Your uploaded photo">
+
+    <button id="rateBtn" style="display:none;">Rate My Pic 🔍</button>
+
+    <div class="loader" id="loader">Analyzing your photo with AI magic ✨...</div>
+
+    <div class="message" id="message">
+      <h2>🚀 Big Things Coming!</h2>
+      <p>
+        We're currently rolling out  <span class="highlight">major improvements</span> to make your experience faster, smarter, and more accurate. Secure early access at 50% off by pre-booking now.
+      </p>
+      <p>
+        Secure your spot as an <span class="highlight">early access member</span> and pre-book now at <strong>50% off</strong>.  
+        Be among the first to experience the full AI-powered beauty & vibe analysis.
+      </p>
+      <button onclick="window.location.href='https://jerome72-svg.github.io/DripAI-Prebook-Website/'">✨ Pre-book Now</button>
+    </div>
+  </div>
+
+  <footer>© 2025 DripAI. All rights reserved.</footer>
+
+  <script>
+    const upload = document.getElementById("upload");
+    const preview = document.getElementById("preview");
+    const rateBtn = document.getElementById("rateBtn");
+    const loader = document.getElementById("loader");
+    const message = document.getElementById("message");
+
+    upload.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (event) {
+          preview.src = event.target.result;
+          preview.style.display = "block";
+          rateBtn.style.display = "inline-block";
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    rateBtn.addEventListener("click", () => {
+      preview.style.display = "none";
+      rateBtn.style.display = "none";
+      loader.style.display = "block";
+
+      setTimeout(() => {
+        loader.style.display = "none";
+        message.style.display = "block";
+      }, 2500);
+    });
+  </script>
+</body>
+</html>
