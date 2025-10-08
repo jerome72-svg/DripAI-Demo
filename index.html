@@ -103,12 +103,32 @@
       color: rgba(255,255,255,0.6);
     }
 
+    /* NEW SPINNER ADDED HERE */
     .loader {
       display: none;
+      margin-top: 25px;
+      text-align: center;
+    }
+
+    .spinner {
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-top: 4px solid #f9a8d4;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 15px auto;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .loader-text {
       font-weight: 600;
       font-size: 1.1rem;
       color: #f9a8d4;
-      margin-top: 15px;
       animation: blink 1.2s infinite alternate;
     }
 
@@ -131,12 +151,15 @@
 
     <button id="rateBtn" style="display:none;">Rate My Pic 🔍</button>
 
-    <div class="loader" id="loader">Analyzing your photo with AI magic ✨...</div>
+    <div class="loader" id="loader">
+      <div class="spinner"></div>
+      <div class="loader-text">Analyzing your photo with AI magic ✨...</div>
+    </div>
 
     <div class="message" id="message">
       <h2>🚀 Big Things Coming!</h2>
       <p>
-        We're currently rolling out  <span class="highlight">major improvements</span> to make your experience faster, smarter, and more accurate. Secure early access at 50% off by pre-booking now.
+        We're currently rolling out <span class="highlight">major improvements</span> to make your experience faster, smarter, and more accurate. Secure early access at 50% off by pre-booking now.
       </p>
       <p>
         Secure your spot as an <span class="highlight">early access member</span> and pre-book now at <strong>50% off</strong>.  
